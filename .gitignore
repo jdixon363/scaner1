@@ -1,0 +1,7 @@
+objectiv.md
+backend/venv
+.env
+.env.dev
+*.env
+host.txt
+progress.md

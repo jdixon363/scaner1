@@ -1,0 +1,19 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8850:8850"
+    environment:
+      CORS_ORIGINS: ${CORS_ORIGINS:?set in .env}
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: ${VITE_API_URL:?set in .env}
+    ports:
+      - "3300:3300"
+    depends_on:
+      - backend
+    restart: unless-stopped
